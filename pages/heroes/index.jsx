@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Head from 'next/head'
+import * as S from '../../styles/heros.style'
 
 
 
@@ -35,28 +36,26 @@ function nameHeroes() {
                 <title>Heroes</title>
                 <link rel="icon" href="../captain-america.png" />
             </Head>
-            <div className="header-list">
+            <S.TitleList>
                 <h1>Hero List</h1>
                 <a href="../">Back</a>
-            </div>
+            </S.TitleList>
             {data &&
-                <div className="hero-list">
+                <S.HeroList className="hero-list">
                     {data.map((herois) => {
                         return (
-                        <a className="heroes" href={`/hero?id=${herois.id}`}>
+                        <S.HeroBox  href={`/hero?id=${herois.id}`}>
                             <p>
                                 {herois.name}
                             </p>
-                            <img
-                                className="thumbnail-hero"
+                            <S.Image
                                 src={`${herois.thumbnail.path}.${herois.thumbnail.extension}`}
                             />
-                        </a>
+                        </S.HeroBox>
                     )
                 }
                 )}
-
-                </div>}
+                </S.HeroList>}
         </div>
     )
 }

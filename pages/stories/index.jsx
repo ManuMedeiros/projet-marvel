@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Head from 'next/head'
+import * as S from '../../styles/stories.style'
 
 const stories = () => {
     const [story, setStory] = useState();
@@ -33,7 +34,7 @@ const stories = () => {
                 <link rel="icon" href="/captain-america.png" />
             </Head>
             {story &&
-                <div className="page-story">
+                <S.DivGeneral>
                     <>
                         <img className="herosRead" src="../herois-lendo.jpg" />
                         <h1>{story[0].title}</h1>
@@ -64,8 +65,8 @@ const stories = () => {
                         <h2>Type</h2>
                         <p>{story[0].type}</p>
                     </>
-                    <a className="back" href="./">Back</a>
-                </div>
+                    <S.Back className="back" href="./">Back</S.Back>
+                </S.DivGeneral>
             }
         </div>
     )

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Head from 'next/head'
+import Head from 'next/head';
+import * as S from '../../styles/hero.style';
 
 const Hero = () => {
     const [data, setData] = useState ();
@@ -32,7 +33,7 @@ const Hero = () => {
                 <link rel="icon" href="../captain-america.png" />
             </Head>
             {search &&
-                <div className="heroi-solo">
+                <S.DivGeneral>
                     <h2>
                         {search[0].name}
                     </h2>
@@ -42,31 +43,32 @@ const Hero = () => {
                     <p>
                         {search[0].description}
                     </p>
-                    <div className="comic-list">
+                    <S.ListComic>
                         <h2>Comics</h2>
-                        <ul className="ul-comic">
+                        <S.UlComic className="ul-comic">
                             {search[0].comics.items.map((comic) => {
                                 return (
-                                    <li className="hq-list"><a href={`/comic?=${comic.resourceURI}`}>{comic.name}</a>
-                                    </li>
+                                    <S.HqList>
+                                        <a href={`/comic?=${comic.resourceURI}`}>{comic.name}</a>
+                                    </S.HqList>
                                 )
                             }
                             )}
-                        </ul>
+                        </S.UlComic>
                         <h2>Stories</h2>
-                        <ul className="ul-stories">
+                        <S.UlComic>
                             {search[0].stories.items.map((story) => {
                                 return (
-                                    <li className="stories-list">
+                                    <S.HqList>
                                         <a href={`/stories?=${story.resourceURI}`}>{story.name}</a>
-                                    </li>
+                                    </S.HqList>
                                 )
                             }
                             )}
-                        </ul>
-                    </div>
-                    <a className="back" href="../">Back</a>
-                </div>
+                        </S.UlComic>
+                    </S.ListComic>
+                    <S.Back href="../">Back</S.Back>
+                </S.DivGeneral>
             }
         </div>
     )

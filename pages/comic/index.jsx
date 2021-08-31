@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Head from 'next/head'
+import * as S from '../../styles/comic.style';
 
 const comic = () => {
     const [hq, setHq] = useState();
@@ -30,26 +31,24 @@ const comic = () => {
                 <link rel="icon" href="/captain-america.png" />
             </Head>
             {hq &&
-                <div className="page-hq">
-                    <>
+                <S.DivGeneral>
                         <h1 className="title">
                             {hq[0].title}
                         </h1>
                         <img className="capa" src={`${hq[0].thumbnail.path}.${hq[0].thumbnail.extension}`} />
-                    </>
                     <h2>Creators</h2>
-                    <ul className="creators-list">
+                    <S.Creators>
                         {hq[0].creators.items.map((criadores) => {
                             return (
-                                <li className="creators-name">
+                                <li>
                                     {criadores.name}
                                 </li>
                             )
                         }
                         )}
-                    </ul>
+                    </S.Creators>
                     <h2>Prices Market</h2>
-                    <div className="prices">
+                    <S.Prices>
                         {hq[0].prices.map((preço) => {
                             return (
                                 <>
@@ -63,9 +62,9 @@ const comic = () => {
                             )
                         }
                         )}
-                    </div>
-                    <a className="back" href="./">Back</a>
-                </div>
+                    </S.Prices>
+                    <S.Back href="./">Back</S.Back>
+                </S.DivGeneral>
             }
         </div>
     )
